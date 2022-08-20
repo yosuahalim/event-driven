@@ -38,6 +38,11 @@ class Event(HashModel):
         database = redis
 
 
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+
 @app.get("/deliveries/{pk}/status")
 async def get_state(pk: str):
     state = redis.get(f'delivery:{pk}')
